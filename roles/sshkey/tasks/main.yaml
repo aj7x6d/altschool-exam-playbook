@@ -1,0 +1,4 @@
+- name: Deploy SSH Key
+  authorized_key: user={{username}}
+                  key="{{ lookup('file', '~/.ssh/control_node.pub') }}"
+                  state=present

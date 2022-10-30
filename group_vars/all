@@ -1,0 +1,22 @@
+# apache variables
+php_version: 8.0
+username: johnpaul_ugwulo
+vhost_name: remote_node1
+server_document_root: "/var/www/html"
+
+# mysql server variables
+db_username: johnpaul_ugwulo
+db_password: ugwulo123
+db_name: mysql_server_db
+
+# Certbot role varaibles
+certbot_create_if_missing: false
+certbot_create_method: standalone
+certbot_admin_email: seanlite94@gmail.com
+
+certbot_create_standalone_stop_services:
+  - apache2
+
+apache_vhosts:
+  - {servername: "ugwulo.me", serveralias: "www.ugwulo.me", documentroot: "/var/www/html/altschool_exam/public"}
+

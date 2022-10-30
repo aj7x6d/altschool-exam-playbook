@@ -1,0 +1,36 @@
+# ssh key setup for remote user
+- hosts: all
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+    - include_role:
+        name: sshkey
+        
+# install php
+- hosts: all
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+    - include_role:
+        name: php
+
+# install mysql
+- hosts: all
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+    - include_role:
+        name: mysql
+
+# TODO 
+# install Letsencrypt SSL with Certbot
+#- hosts: all
+#  become: true
+#  become_user: root
+#  gather_facts: false
+#  tasks:
+#    - include_role:
+#        name: cert
