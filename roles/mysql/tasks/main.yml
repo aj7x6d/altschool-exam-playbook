@@ -20,17 +20,17 @@
          state: started
          enabled: yes
 
-    - name: creating mysql user (medium_post)
+    - name: creating mysql user
       mysql_user:
-         name: "{{db_username}}"
-         password: "{{db_password}}"
+         name: johnpaul_ugwulo
+         password: ugwulo123
          priv: '*.*:ALL'
          host: '%'
          state: present
     
-    - name: creating medium_db 
+    - name: creating remote_server_db 
       mysql_db:
-         name: "{{db_name}}"
+         name: mysql_server_db
          state: present
     
     - name: Enable remote login to mysql

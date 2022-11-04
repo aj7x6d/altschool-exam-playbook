@@ -60,6 +60,9 @@
 - name: Change permission
   shell: sudo chmod -R 775 /var/www/html/{{ vhost_name }}/storage
 
+- name: Add user to www-data group
+  command: sudo usermod -aG www-data $USER
+
 - name: Remove default apache vhost config from sites-enabled
   file: name=/etc/apache2/sites-enabled/000-default.conf state=absent
 

@@ -1,0 +1,5 @@
+/.idea
+/inventories/dev/hosts
+/group_vars/all
+*.retry
+*.log

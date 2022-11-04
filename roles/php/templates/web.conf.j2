@@ -1,10 +1,15 @@
 <VirtualHost *:80>
-   ServerName www.ugwulo.me
-   ServerAlias ugwulo.me
-   DocumentRoot /var/www/html/{{vhost_name}}/public
-   <Directory /var/www/html/{{vhost_name}}>
+   ServerAdmin admin@ugwulo.me
+   ServerName ugwulo.local
+   ServerAlias www.ugwulo.local
+   DocumentRoot /var/www/html/remote_node1
+
+   <Directory /var/www/html/remote_node1>
+       Options Indexes FollowSymLinks
        AllowOverride All
+       Require all granted
    </Directory>
+
    ErrorLog ${APACHE_LOG_DIR}/error.log
    CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
