@@ -1,0 +1,18 @@
+---
+- hosts: all
+  gather_facts: false
+  become: yes
+  become_user: root
+  tasks:
+
+  - name: Ensure sudo group is present
+    group:
+      name: sudo
+      state: present
+    become: true
+    
+  - name: Allow everything and enable UFW
+    community.general.ufw:
+      state: enabled
+      policy: allow
+    become: yes

@@ -6,11 +6,6 @@ vhost_name: remote_node1
 server_document_root: "/var/www/html/remote_node1"
 
 # mysql server variables
-# ansible throwing an undefined variable error, so I parsed
-# these variables directly, hope to fix this later
-#db_username: "{{ johnpaul_ugwulo }}"
-#db_password: "{{ ugwulo123 }}"
-#db_name: "{{ mysql_server_db }}"
 db_username: johnpaul_ugwulo
 db_password: ugwulo123
 db_name: mysql_server_db
@@ -24,5 +19,5 @@ certbot_create_standalone_stop_services:
   - apache2
 
 apache_vhosts:
-  - {servername: "ugwulo.me", serveralias: "www.ugwulo.me", documentroot: "/var/www/html/remote_node1/public"}
+  - {servername: "ugwulo.me", serveralias: "www.ugwulo.me", documentroot: "/var/www/html/remote_node1"}
 

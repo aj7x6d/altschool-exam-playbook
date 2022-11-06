@@ -1,36 +1,26 @@
-# ssh key setup for remote user
+# install Letsencrypt SSL with Certbot, I ran this as a seperate playbook in the cert task
 - hosts: all
   become: true
   become_user: root
   gather_facts: false
   tasks:
     - include_role:
-        name: sshkey
-        
-# install php
-- hosts: all
-  become: true
-  become_user: root
-  gather_facts: false
-  tasks:
-    - include_role:
-        name: php
+        name: cert
 
-# install mysql
-- hosts: all
-  become: true
-  become_user: root
-  gather_facts: false
-  tasks:
-    - include_role:
-        name: mysql
 
-# TODO 
-# install Letsencrypt SSL with Certbot
-#- hosts: all
-#  become: true
-#  become_user: root
-#  gather_facts: false
-#  tasks:
-#    - include_role:
-#        name: cert
+
+
+- name: Change Permissions
+  hosts: all
+  become: false
+  become_user: root
+  gather_facts: true
+  tasks:
+    - name: Change file ownership, group and permissions in project folder
+      ansible.builtin.file:
+        path: /var/www/html/remote_node1
+        state: directory
+        recurse: true
+        owner: www-data
+        group: www-data
+        mode: '775'
